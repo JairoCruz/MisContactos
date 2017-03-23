@@ -29,7 +29,20 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+   // https://api.instagram.com/oauth/authorize/?client_id=d457e5e2ca054aadadd4a43296cd083e&redirect_uri=https://twitter.com/JAIRONMAINDEN&response_type=code&scope=basic+comments+follower_list+likes+relationships+public_content
+   // code=9a9eb6dc40e6451c8fd8e6144848adcc
 
+    /*curl -F 'client_id=d457e5e2ca054aadadd4a43296cd083e' \
+            -F 'client_secret=c98b995c655347989db37e9cb8f469b7' \
+            -F 'grant_type=authorization_code' \
+            -F 'redirect_uri=https://twitter.com/JAIRONMAINDEN' \
+            -F 'code=83d6e70cd3084b1d9762ff09526cffa0' \
+    https://api.instagram.com/oauth/access_token*/
+
+    //{"user": {"username": "azaveliz", "profile_picture": "https://instagram.fads1-1.fna.fbcdn.net/t51.2885-19/11906329_960233084022564_1448528159_a.jpg", "bio": "", "website": "", "id": "4735542793", "full_name": "Jairo Cruz"}, "access_token": "4735542793.d457e5e.6d982763351140daa2d44b2031bd36aa"}
+
+    // https://api.instagram.com/v1/users/self/?access_token=4735542793.d457e5e.6d982763351140daa2d44b2031bd36aa
+    // https://api.instagram.com/v1/users/4735542793/?access_token=4735542793.d457e5e.6d982763351140daa2d44b2031bd36aa
 
 
     private Toolbar toolbar;
