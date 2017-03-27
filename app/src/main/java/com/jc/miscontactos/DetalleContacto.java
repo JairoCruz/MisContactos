@@ -12,14 +12,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetalleContacto extends AppCompatActivity {
 
-    TextView tvNombre;
-    TextView tvTelefono;
-    TextView tvEmail;
+    private static final String KEY_EXTRA_URL = "url";
+    private static final String KEY_EXTRA_LIKES = "like";
+
+
+    private ImageView imgFotoDetalle;
+    private TextView tvLikesDetalles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +37,11 @@ public class DetalleContacto extends AppCompatActivity {
 
         Bundle parametros = getIntent().getExtras();
 
-        String nombre = parametros.getString("Nombre");
-        String telefono = parametros.getString("Telefono");
-        String email = parametros.getString("Email");
+        String urlFoto = parametros.getString("KEY_EXTRA_URL");
+        int likes = parametros.getInt("KEY_EXTRA_LIKES");
 
-        tvNombre = (TextView) findViewById(R.id.tvNombre);
-        tvTelefono = (TextView) findViewById(R.id.tvTelefono);
-        tvEmail = (TextView) findViewById(R.id.tvEmail);
-
-        tvNombre.setText(nombre);
-        tvTelefono.setText(telefono);
-        tvEmail.setText(email);
-
-        // agregare  al nombre para que se muestre un menu de contexto
-        registerForContextMenu(tvNombre);
-
+        tvLikesDetalles = (TextView) findViewById(R.id.tvLikesDetalle);
+        tvLikesDetalles.setText(String.valueOf(likes));
 
     }
 
@@ -75,31 +69,9 @@ public class DetalleContacto extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    public void llamar(View v) {
-        String telefono = tvTelefono.getText().toString();
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telefono)));
-    }
 
-    public void enviarMail(View v){
 
-        String email = tvEmail.getText().toString();
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, email);
-        emailIntent.setType("message/rfcc822");
-        startActivity(Intent.createChooser(emailIntent, "Email"));
 
-    }
 
     // el menu popup es mostrado por un metodo click sobre el elemento
     public void levantarMenuPopUp(View v){

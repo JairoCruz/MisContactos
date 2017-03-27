@@ -6,33 +6,43 @@ package com.jc.miscontactos.pojo;
 
 public class Contacto {
 
-    private int id;
-    private String nombre,telefono,email;
-    private int foto;
-    private int likes;
+    private String  id;
+    private String nombreCompleto;
+    private String urlFoto;
+    private int likes = 0;
 
-    public Contacto(int foto, String nombre, String telefono, String email, int likes) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-        this.foto = foto;
+    public Contacto() {
+    }
+
+    public Contacto(String id, String nombreCompleto, String urlFoto, int likes) {
+        this.id = id;
+        this.nombreCompleto = nombreCompleto;
+        this.urlFoto = urlFoto;
         this.likes = likes;
     }
 
-    public Contacto() {
-
+    public String getId() {
+        return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public int getLikes() {
@@ -41,33 +51,5 @@ public class Contacto {
 
     public void setLikes(int likes) {
         this.likes = likes;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getFoto() {
-        return foto;
-    }
-
-    public void setFoto(int foto) {
-        this.foto = foto;
     }
 }
