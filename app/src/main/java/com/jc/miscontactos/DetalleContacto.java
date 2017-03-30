@@ -9,12 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class DetalleContacto extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class DetalleContacto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_contacto);
+        setContentView(R.layout.activity_detalle_foto);
 
         Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
         setSupportActionBar(miActionBar);
@@ -37,11 +40,18 @@ public class DetalleContacto extends AppCompatActivity {
 
         Bundle parametros = getIntent().getExtras();
 
-        String urlFoto = parametros.getString("KEY_EXTRA_URL");
-        int likes = parametros.getInt("KEY_EXTRA_LIKES");
+        String urlFoto = parametros.getString(KEY_EXTRA_URL);
+        int likes = parametros.getInt(KEY_EXTRA_LIKES);
+        Log.e("foto", "" + urlFoto);
 
         tvLikesDetalles = (TextView) findViewById(R.id.tvLikesDetalle);
         tvLikesDetalles.setText(String.valueOf(likes));
+
+        imgFotoDetalle = (ImageView) findViewById(R.id.imgFotoDetalle);
+        Picasso.with(this)
+                .load(urlFoto)
+                .placeholder(R.drawable.ic_user_profile)
+                .into(imgFotoDetalle);
 
     }
 

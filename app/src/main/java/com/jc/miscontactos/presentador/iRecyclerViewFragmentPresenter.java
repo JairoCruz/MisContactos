@@ -8,6 +8,8 @@ public interface iRecyclerViewFragmentPresenter {
 
     public void obtenerContactosBaseDatos();
 
+
+
     void obtenerMediosRecientes();
 
     public void mostrarContactosRv();

@@ -16,6 +16,7 @@ import com.jc.miscontactos.db.ConstructorContactos;
 import com.jc.miscontactos.pojo.Contacto;
 import com.jc.miscontactos.DetalleContacto;
 import com.jc.miscontactos.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -49,9 +50,13 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     public void onBindViewHolder(final ContactoViewHolder contactoViewHolder, int position) {
         final Contacto contacto = contactos.get(position);
         // contactoViewHolder.imgFoto.setImageResource(contacto.getUrlFoto());
+        Picasso.with(activity)
+                .load(contacto.getUrlFoto())
+                .placeholder(R.drawable.ic_user_profile)
+                .into(contactoViewHolder.imgFoto);
         // contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
         // contactoViewHolder.tvTelefonoCV.setText(contacto.getTelefono());
-        contactoViewHolder.tvLikes.setText(String.valueOf(contacto.getLikes()) + " Likes");
+        contactoViewHolder.tvLikes.setText(String.valueOf(contacto.getLikes()));
 
         // Agrego un click listener a un imgFoto
         contactoViewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
